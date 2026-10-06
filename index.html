@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Good Morning, My Love ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Arial", sans-serif;
+            overflow: hidden;
+            background: linear-gradient(
+                to bottom,
+                #12002f,
+                #4b176d,
+                #ff7b54,
+                #ffd166
+            );
+            color: white;
+            text-align: center;
+        }
+
+        /* SUN */
+
+        .sun {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: #ffd166;
+            border-radius: 50%;
+            bottom: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 70px #ffd166;
+            animation: sunrise 4s ease-out forwards;
+        }
+
+        @keyframes sunrise {
+            from {
+                bottom: -20%;
+            }
+
+            to {
+                bottom: 18%;
+            }
+        }
+
+        /* MAIN CARD */
+
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 450px;
+            padding: 35px 25px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .envelope {
+            font-size: 65px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 15px 0;
+        }
+
+        .name {
+            color: #ffe4ec;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            color: #e91e63;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        #surprise {
+            display: none;
+            margin-top: 25px;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .love {
+            font-size: 30px;
+            margin-top: 15px;
+        }
+
+        /* FLOATING HEARTS */
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: floatUp linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* STARS */
+
+        .star {
+            position: absolute;
+            color: white;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="sun"></div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="envelope">
+                💌
+            </div>
+
+            <h1>
+                Good Morning,
+                <span class="name">HOT STUFF</span> ❤️
+            </h1>
+
+            <p>
+                Before you start your day, I wanted to leave
+                something here just for you.
+            </p>
+
+            <p>
+                I hope you woke up feeling peaceful,
+                beautiful and loved.
+                You have a way of making ordinary moments
+                feel a little more special. ♥️
+            </p>
+
+            <button class="button" onclick="openSurprise()">
+                Tap for your surprise ♥️
+            </button>
+
+            <div id="surprise">
+
+                <p>
+                    If I could give you one thing this morning,
+                    it would be the ability to see yourself
+                    through my eyes...
+                </p>
+
+                <p>
+                    Then you'd understand just how special
+                    you are to me. 🥰
+                </p>
+
+                <div class="love">
+                    I love you ♥️
+                </div>
+
+                <p>
+                    Have an amazing day, HOTSTUFF. ♥️
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function openSurprise() {
+
+            document.getElementById("surprise").style.display = "block";
+
+        }
+
+
+        /* CREATE FLOATING HEARTS */
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            const hearts = ["❤️", "💕", "💖", "💗", "💓","♥️"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+
+        }
+
+        setInterval(createHeart, 500);
+
+
+        /* CREATE STARS */
+
+        function createStar() {
+
+            const star = document.createElement("div");
+
+            star.className = "star";
+
+            star.innerHTML = "✨";
+
+            star.style.left =
+                Math.random() * 100 + "vw";
+
+            star.style.top =
+                Math.random() * 60 + "vh";
+
+            star.style.fontSize =
+                (10 + Math.random() * 15) + "px";
+
+            document.body.appendChild(star);
+
+        }
+
+        for (let i = 0; i < 25; i++) {
+
+            createStar();
+
+        }
+
+    </script>
+
+</body>
+</html>
